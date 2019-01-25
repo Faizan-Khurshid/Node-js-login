@@ -1,0 +1,19 @@
+how to register and login a user
+
+get email, make sure it isn't already in database
+get password, transfer it into hash using bcrypt
+store in database
+
+login
+get email,verify email
+get password compare it with hash password using bcrypt.compare method
+if verified
+generate token with jwt
+const token = jwt.sign({ user : user.req.body }, "anysecretkey")
+save this token 
+whenever user requests any post api he should also send his token in headers 
+verify token using jwt
+jwt.verify(token , "samesecretkey", (err, res) => {})
+in its response you get what you send during the genaration of password i.e. user object
+check if user object is same
+
